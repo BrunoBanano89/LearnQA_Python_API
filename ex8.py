@@ -13,6 +13,7 @@ seconds = data.get("seconds")
 print(f"Токен задачи: {token}")
 print(f"Время выполнения: {seconds} секунд")
 
+
 print("2. Проверка готовности задачи")
 response_before = requests.get(URL, params={"token": token})
 status_before = response_before.json()
@@ -23,9 +24,11 @@ print(f"Есть поле 'result': {'result' in status_before}")
 assert status_before.get("status") == "Job is NOT ready", "Задача уже готова"
 print("Ждём")
 
+
 print(f"3. Осталось {seconds} секунд")
 time.sleep(seconds)
 print("Ожидание завершено")
+
 
 print("4. Повторная проверка")
 response_after = requests.get(URL, params={"token": token})
